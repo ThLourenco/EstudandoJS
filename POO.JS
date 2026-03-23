@@ -290,6 +290,7 @@ class Aviao{
 }
 
 const asas = Symbol()
+const pilotos = Symbol()
 
 Aviao. prototype[asas] = 2;
 Aviao. prototype[pilotos] = 2;
@@ -297,4 +298,93 @@ Aviao. prototype[pilotos] = 2;
 const boieng = new Aviao("boieng", 10);
 console.log(boieng);
 console.log(boieng[asas]);
-console.log(boieng[pilotos]);
+console.log(boieng[pilotos]); 
+//👉 Symbol cria uma chave única e protegida no objeto
+
+// ------------------------------------
+
+/* Getters e setters
+Os getters e setters sao bem famossos na orientaçao a objetos
+O GET é um metodo utilizado para exibir o valor de alguma propriedade
+e o SET é utilizado para alterar o valor;
+atraves de metodos , temos um bloco de codigo para transformaçao de dados */
+
+class Post{
+    constructor(titulo, descricao, tags){
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.tags = tags;
+    }
+
+    get exibirTitulo(){
+        return `Voce esta lendo: ${this.titulo}`; 
+    }
+
+    set adicionarTag(tags){
+        const tagsArrays = tags.split(",")
+        this.tags - tagsArrays;
+    }
+}
+
+//------get
+const mypost = new Post("algums post","é um post sobre programaçao");
+console.log(mypost); //nao exivi a descriçao
+console.log(mypost.exibirTitulo);
+
+//------ set
+mypost.adicionarTag = "programaçao, javascritp";
+console.log(mypost.adicionarTag);
+
+
+// ------------------------------------
+
+/*HERANÇA
+
+uma classe pode herdar propriedade de outra por meio de herança.
+Utilizamos a palabra chave extends, para adiconar a classe que vai trazer as proprieades
+E super para envair os valores para a classe pai.
+*/
+
+class Mamifera{
+    constructor(patas){
+        this.patas = patas
+    }
+}
+
+class Lobo extends Mamifera{
+    constructor(patas, nome){
+        super(patas)
+        this.nome = nome;
+    }
+}
+
+const shark = new Lobo(4,"sahrk");
+console.log(shark.patas)
+
+/*💡 Analogia:
+
+Mamifera → define que todo mamífero tem patas 🐾
+
+Lobo → herda isso e adiciona nome 🐺
+
+👉 super() = “pega as patas do pai” */
+
+// ------------------------------------
+
+/* Operador instanceof
+/* 🧠 ✔️ Regra correta:
+
+👉 instanceof verifica OBJETOS, não classes 
+
+assim como typeof que verificar o tipo, temos o operador instanceof;
+que verificar se um objeto é paiu de outro, para ter certeza da ancestralidade.
+isso é verificar com o objeto =>, e nao atrasvas da classes 
+ */
+
+console.log(shark instanceof Lobo);
+console.log(Lobo instanceof Mamifera);
+/*🧠 Por quê?
+👉 instanceof verifica objetos criados, não classes
+Lobo é uma classe (função)
+Não é uma instância de Mamifera*/
+console.log(new Lobo(4,"terrie") instanceof Mamifera);
