@@ -202,3 +202,20 @@ camelCase é um padrão de escrita de nomes de variáveis onde:
 👉 A primeira palavra começa com letra minúscula
 👉 As próximas palavras começam com letra maiúscula
 */
+
+/*
+mainContainer.style.color = "red";
+mainContainer.style.backgroundColor = "#23132"
+mainContainer.style.paddingcolor = "#232"
+*/
+
+//----------------------------------------------------------
+
+/* Alerando estilos de HTMLCollection
+
+HTMLCollectiuon aparece quando selecionamos varios elementos de uma vez
+Podemos passar por cada um dos elementos com um for of, e estilizar individualmente cada item;*/
+
+for(const li of listItens){
+    li.style.backgroundColor = "red"
+}
